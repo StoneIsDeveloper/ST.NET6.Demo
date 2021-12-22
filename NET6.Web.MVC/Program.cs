@@ -1,5 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
 
+#region 使用Session
+builder.Services.AddSession();
+#endregion
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -15,6 +19,10 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+#region 使用Session
+app.UseSession();
+#endregion
 
 app.UseRouting();
 
