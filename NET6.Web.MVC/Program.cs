@@ -1,7 +1,16 @@
-var builder = WebApplication.CreateBuilder(args);
+
+
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 #region 使用Session
 builder.Services.AddSession();
+#endregion
+
+#region log4net
+////Nuget引入：
+////1.Log4Net
+////2.Microsoft.Extensions.Logging.Log4Net.AspNetCore
+builder.Logging.AddLog4Net();
 #endregion
 
 // Add services to the container.
