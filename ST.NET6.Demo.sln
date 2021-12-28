@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET6.Web.MVC", "NET6.Web.MV
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET6.Console.Demo", "NET6.Console.Demo\NET6.Console.Demo.csproj", "{A99EC9D6-0154-4C72-B281-178591243877}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ST.ARC.DataAccess", "ST.ARC.DataAccess\ST.ARC.DataAccess.csproj", "{72602914-74E6-413B-83E9-AD3819D1A3AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A99EC9D6-0154-4C72-B281-178591243877}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A99EC9D6-0154-4C72-B281-178591243877}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A99EC9D6-0154-4C72-B281-178591243877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72602914-74E6-413B-83E9-AD3819D1A3AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72602914-74E6-413B-83E9-AD3819D1A3AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72602914-74E6-413B-83E9-AD3819D1A3AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72602914-74E6-413B-83E9-AD3819D1A3AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
