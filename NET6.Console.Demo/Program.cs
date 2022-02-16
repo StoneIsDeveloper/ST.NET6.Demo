@@ -1,4 +1,5 @@
-﻿using static System.Console;
+﻿using ST.ARC.DataAccess;
+using static System.Console;
 
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
@@ -23,3 +24,4 @@ WriteLine($"Equals:{Equals(person, originalPerson)}");
 WriteLine($"== operater:{person == originalPerson}");
 
 
+DBHelperSql.LogInfo("today test");
