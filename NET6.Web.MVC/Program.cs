@@ -13,6 +13,13 @@ builder.Services.AddSession();
 builder.Logging.AddLog4Net();
 #endregion
 
+#region NLog
+{
+    //Nuget“˝»Î£∫NLog.Web.AspNetCore
+    //builder.Logging.AddNLog("CfgFile/NLog.config");
+}
+#endregion
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
