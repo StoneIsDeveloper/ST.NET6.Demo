@@ -5,4 +5,4 @@
 ## Todo
 - [x] Log4net 日志写入SqlServer
 
-- [ ] Authentication and Authoriza 登录鉴权授权
+- [ ] Identity Authentication and Authoriza 登录鉴权授权
