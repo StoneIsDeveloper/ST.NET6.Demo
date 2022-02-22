@@ -6,3 +6,4 @@
 - [x] Log4net 日志写入SqlServer
 
 - [ ] Identity Authentication and Authoriza 登录鉴权授权
+- [ ] Angular12 with WEB API
