@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET6.Web.MVC", "NET6.Web.MV
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET6.Console.Demo", "NET6.Console.Demo\NET6.Console.Demo.csproj", "{A99EC9D6-0154-4C72-B281-178591243877}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ST.ARC.DataAccess", "ST.ARC.DataAccess\ST.ARC.DataAccess.csproj", "{72602914-74E6-413B-83E9-AD3819D1A3AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ST.ARC.DataAccess", "ST.ARC.DataAccess\ST.ARC.DataAccess.csproj", "{72602914-74E6-413B-83E9-AD3819D1A3AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ST.Razor.Web", "ST.Razor.Web\ST.Razor.Web\ST.Razor.Web.csproj", "{AD99EB74-0726-4939-B200-A7724BDC87B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RazorWeb", "RazorWeb", "{4048C78D-9C7E-49C1-81E0-38CA74E7EF86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +31,16 @@ Global
 		{72602914-74E6-413B-83E9-AD3819D1A3AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72602914-74E6-413B-83E9-AD3819D1A3AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72602914-74E6-413B-83E9-AD3819D1A3AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD99EB74-0726-4939-B200-A7724BDC87B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD99EB74-0726-4939-B200-A7724BDC87B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD99EB74-0726-4939-B200-A7724BDC87B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD99EB74-0726-4939-B200-A7724BDC87B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AD99EB74-0726-4939-B200-A7724BDC87B3} = {4048C78D-9C7E-49C1-81E0-38CA74E7EF86}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DDE41132-6831-4ED1-801F-7C44265C63EA}

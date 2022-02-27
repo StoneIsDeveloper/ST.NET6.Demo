@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/ST.Razor.Web/ST.Razor.Web/wwwroot/lib
