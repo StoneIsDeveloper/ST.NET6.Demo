@@ -1,7 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddAuthentication().AddCookie("MyCookieAuth", option =>
+builder.Services.AddAuthentication("MyCookieAuth").AddCookie("MyCookieAuth", option =>
 {
     option.Cookie.Name = "MyCookieAuth";
 });
