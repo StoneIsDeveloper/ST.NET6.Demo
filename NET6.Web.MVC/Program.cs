@@ -12,7 +12,7 @@ builder.Services.AddSession();
 //Nuget“˝»Î£∫
 //1.Log4Net
 //2.Microsoft.Extensions.Logging.Log4Net.AspNetCore
-builder.Logging.AddLog4Net();
+builder.Logging.AddLog4Net(@"./CfgFile/log4net.config");
 #endregion
 
 #region NLog
