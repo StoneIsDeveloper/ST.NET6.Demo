@@ -4,6 +4,24 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthentication("MyCookieAuth").AddCookie("MyCookieAuth", option =>
 {
     option.Cookie.Name = "MyCookieAuth";
+    option.LoginPath = "/Account/Login";
+    option.AccessDeniedPath = "/Account/AccessDenied";
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly",
+       policy => policy.RequireClaim("Admin"));
+
+    options.AddPolicy("MustBelongToHRDepartment",
+        policy => policy.RequireClaim("Department", "HR"));
+
+    options.AddPolicy("HRManagerOnly",
+       policy => policy
+       .RequireClaim("Department", "HR")
+       .RequireClaim("Manager")
+       );
+
 });
 
 // Add services to the container.
