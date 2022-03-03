@@ -31,7 +31,8 @@ namespace ST.Razor.Web.Pages.Account
                     new Claim(ClaimTypes.Email,"admin@website.com"),
                     new Claim("Department","HR"),
                     new Claim("Admin","true"),
-                    new Claim("Manager","true")
+                    new Claim("Manager","true"),
+                    new Claim("EmployDate","2021-05-06")
                 };
                 var identity = new ClaimsIdentity(claims, "MyCookieAuth");
 
