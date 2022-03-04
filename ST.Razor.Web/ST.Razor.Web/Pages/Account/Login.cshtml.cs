@@ -32,7 +32,7 @@ namespace ST.Razor.Web.Pages.Account
                     new Claim("Department","HR"),
                     new Claim("Admin","true"),
                     new Claim("Manager","true"),
-                    new Claim("EmployDate","2021-05-06")
+                    new Claim("EmployDate","2022-01-01")
                 };
                 var identity = new ClaimsIdentity(claims, "MyCookieAuth");
 
