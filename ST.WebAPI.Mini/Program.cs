@@ -1,5 +1,6 @@
 using Serilog;
 using Serilog.Events;
+using Serilog.Sinks.MSSqlServer;
 
 // Setup serilog in a two-step process. First, we configure basic logging
 // to be able to log errors during ASP.NET Core startup. Later, we read
@@ -8,8 +9,15 @@ using Serilog.Events;
 // General information about serilog can be found at
 // https://serilog.net/
 
+ IConfiguration configuration  = new ConfigurationBuilder()
+      .SetBasePath(Directory.GetCurrentDirectory())
+      .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+      .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
+      .Build();
+
 
 Log.Logger = new LoggerConfiguration()
+            .ReadFrom.Configuration(configuration)
             .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
             .Enrich.FromLogContext()
             .WriteTo.Console()
