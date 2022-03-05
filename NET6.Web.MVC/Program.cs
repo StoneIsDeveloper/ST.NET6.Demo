@@ -12,15 +12,17 @@ builder.Services.AddSession();
 //Nuget引入：
 //1.Log4Net
 //2.Microsoft.Extensions.Logging.Log4Net.AspNetCore
-builder.Logging.AddLog4Net(@"./CfgFile/log4net.config");
+//builder.Logging.AddLog4Net(@"./CfgFile/log4net.config");
 #endregion
 
 #region NLog
 {
     //Nuget引入：NLog.Web.AspNetCore
-    //builder.Logging.AddNLog("CfgFile/NLog.config");
+    builder.Logging.AddNLog("CfgFile/NLog.config");
 }
 #endregion
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

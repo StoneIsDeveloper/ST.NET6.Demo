@@ -20,6 +20,7 @@ namespace NET6.Web.MVC.Controllers
 
         public IActionResult Index()
         {
+            this._Logger.LogInformation($"{this.GetType().Name}Access Second Page。。。_Logger1");
             return View();
         }
     }
