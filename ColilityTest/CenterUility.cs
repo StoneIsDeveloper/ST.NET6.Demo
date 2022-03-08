@@ -8,6 +8,7 @@ namespace CodilityTest
 {
     public class CenterUility
     {
+        #region Lesson 1 Iterations
         public static int FindMaxBinaryGap(int number)
         {
             {
@@ -43,5 +44,27 @@ namespace CodilityTest
 
             return maxGap;
         }
+        #endregion
+
+        #region Lesson 2 Arrays
+        public static int[] CyclicRotation(int[] a, int k)
+        {
+            var b = new int[a.Length];
+
+            for(int i=0; i< a.Length; i++)
+            {
+                b[(i + k) % a.Length] = a[i];
+            }
+
+            return b;
+        }
+
+
+
+        public static void OddOccurrencesInArray()
+        {
+
+        }
+        #endregion
     }
 }
