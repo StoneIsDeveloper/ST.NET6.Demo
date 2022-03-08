@@ -61,9 +61,33 @@ namespace CodilityTest
 
 
 
-        public static void OddOccurrencesInArray()
+        public static int? OddOccurrencesInArray(int[] a)
         {
+            var dictionary = new Dictionary<int, short>();
+            int? oddVal = null;
 
+            for(var i=0; i< a.Length; i++)
+            {
+                if (dictionary.ContainsKey(a[i]))
+                {
+                    dictionary[a[i]] = 2;
+                }
+                else
+                {
+                    dictionary.Add(a[i], 1);
+                }
+            }
+
+            foreach (KeyValuePair<int, short> entry in dictionary)
+            {
+                if (entry.Value == 1)
+                {
+                    oddVal = entry.Key;
+                    break;
+                }
+            }
+
+            return oddVal;
         }
         #endregion
     }
