@@ -15,6 +15,9 @@ int[] a= new int[5] { 3, 8, 9, 7, 6 };
 
 var b =CenterUility.CyclicRotation(a,5);
 
+
+var jmp =CenterUility.FrogJmp(10,85,30);
+
 Console.ReadKey();
 
 

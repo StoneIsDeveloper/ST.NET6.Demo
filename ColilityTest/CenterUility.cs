@@ -27,7 +27,9 @@ namespace CodilityTest
             while (divResult > 0)
             {
                 var remainder = 0;
-                divResult = Math.DivRem(divResult, 2, out remainder);  // 取整 & 取余
+                // divResult = Math.DivRem(divResult, 2, out remainder);  // 取整 & 取余
+                divResult = divResult / 2; // 取整 & 取余
+                remainder = divResult % 2; // 取整 & 取余
                 if (remainder == 1)
                 {
                     findOne = true;
@@ -89,6 +91,27 @@ namespace CodilityTest
 
             return oddVal;
         }
+        #endregion
+
+        #region Lesson 3 Time Complexity
+
+
+        public static int FrogJmp(int x,int y, int d)
+        {
+            int divRem = 0;
+
+            var gap = y - x;
+            var divResult = Math.DivRem(gap, d, out divRem);
+            if (divRem > 0)
+                divResult++;
+
+            return divResult;
+        }
+        public static int FrogJmpV2(int x, int y, int d)
+        {
+           return ((y-x)%d ==0) ? (y-x)/d : (y - x) / d + 1;  
+        }
+
         #endregion
     }
 }
