@@ -112,6 +112,21 @@ namespace CodilityTest
            return ((y-x)%d ==0) ? (y-x)/d : (y - x) / d + 1;  
         }
 
+        public static int PermMissingElem(int[] a)
+        {
+            var result = a[0] ^ 1; ;
+            var missingElement = a[0] ^ 1;
+
+            for(int i = 1; i< a.Length; i++)
+            {
+                missingElement = missingElement ^ a[i] ^ (i + 1);
+            }
+            result = missingElement ^ (a.Length + 1);
+
+            return result;
+
+        }
+
         #endregion
     }
 }

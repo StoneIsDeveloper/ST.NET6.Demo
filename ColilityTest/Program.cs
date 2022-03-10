@@ -18,6 +18,9 @@ var b =CenterUility.CyclicRotation(a,5);
 
 var jmp =CenterUility.FrogJmp(10,85,30);
 
+int[] c = new int[5] { 6, 4, 1, 2,3 };
+var missE = CenterUility.PermMissingElem(c);
+
 Console.ReadKey();
 
 
