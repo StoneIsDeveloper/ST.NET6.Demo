@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CodilityTest
+﻿namespace CodilityTest
 {
     public class CenterUility
     {
@@ -18,6 +12,7 @@ namespace CodilityTest
                 var n1 = number1 / 2;
                 var n2 = number1 % 2;
             }
+            var str = number.ToString("N");
 
             var findOne = false;
             var maxGap = 0;
@@ -27,9 +22,7 @@ namespace CodilityTest
             while (divResult > 0)
             {
                 var remainder = 0;
-                // divResult = Math.DivRem(divResult, 2, out remainder);  // 取整 & 取余
-                divResult = divResult / 2; // 取整 & 取余
-                remainder = divResult % 2; // 取整 & 取余
+                divResult = Math.DivRem(divResult, 2, out remainder);  // 取整 & 取余
                 if (remainder == 1)
                 {
                     findOne = true;
@@ -63,20 +56,20 @@ namespace CodilityTest
 
 
 
-        public static int? OddOccurrencesInArray(int[] a)
+        public static int? OddOccurrencesInArray(int[] A)
         {
             var dictionary = new Dictionary<int, short>();
             int? oddVal = null;
 
-            for(var i=0; i< a.Length; i++)
+            for(var i=0; i< A.Length; i++)
             {
-                if (dictionary.ContainsKey(a[i]))
+                if (dictionary.ContainsKey(A[i]))
                 {
-                    dictionary[a[i]] = 2;
+                    dictionary[A[i]] = 2;
                 }
                 else
                 {
-                    dictionary.Add(a[i], 1);
+                    dictionary.Add(A[i], 1);
                 }
             }
 
@@ -96,12 +89,12 @@ namespace CodilityTest
         #region Lesson 3 Time Complexity
 
 
-        public static int FrogJmp(int x,int y, int d)
+        public static int FrogJmp(int X,int Y, int D)
         {
             int divRem = 0;
 
-            var gap = y - x;
-            var divResult = Math.DivRem(gap, d, out divRem);
+            var gap = Y - X;
+            var divResult = Math.DivRem(gap, D, out divRem);
             if (divRem > 0)
                 divResult++;
 
@@ -112,20 +105,85 @@ namespace CodilityTest
            return ((y-x)%d ==0) ? (y-x)/d : (y - x) / d + 1;  
         }
 
-        public static int PermMissingElem(int[] a)
+        public static int PermMissingElem(int[] A)
         {
-            var result = a[0] ^ 1; ;
-            var missingElement = a[0] ^ 1;
-
-            for(int i = 1; i< a.Length; i++)
+            // empty and single
+            
+            if (A.Length == 0)
             {
-                missingElement = missingElement ^ a[i] ^ (i + 1);
+                return 1;
+            }                 
+            if(A.Length == 1)
+            {
+                return 1;
             }
-            result = missingElement ^ (a.Length + 1);
+
+            var result = A[0] ^ 1; ;
+            var missingElement = A[0] ^ 1;
+
+            for(int i = 1; i< A.Length; i++)
+            {
+                missingElement = missingElement ^ A[i] ^ (i + 1);
+            }
+            result = missingElement ^ (A.Length + 1);
 
             return result;
 
         }
+
+        public static int TapeEquilibrium(int[] A)
+        {
+            var miniGap = 0;
+
+            for (int i = 0; i < A.Length; i++)
+            {
+                var leftSum = 0;
+                for(int m = 0; m < i+1; m++)
+                {
+                    leftSum = leftSum + A[m];
+                }
+
+                var rightSum = 0;
+
+                for (int k = A.Length-1; k > i; k--)
+                {
+                    rightSum = rightSum + A[k];
+                }
+              
+                var diff = Math.Abs(leftSum - rightSum);
+                if (i==0) miniGap = diff;
+                
+                miniGap = diff < miniGap ? diff : miniGap;
+            }
+            return miniGap;
+        }
+
+        // 100%
+        public static int TapeEquilibriumV2(int[] A)
+        {
+            if (A.Length == 0) return 0;
+            if (A.Length == 1) return 0;
+
+            int sum = 0;
+            var miniValue = int.MaxValue;
+            foreach (var item in A)
+            {
+                sum += item;
+            }
+            int leftSum = 0;
+
+            for (int i = 0; i < A.Length-1; i++)
+            {
+                leftSum += A[i];
+                int currentDiff = Math.Abs((sum-leftSum) -leftSum);
+                if(currentDiff < miniValue)
+                {
+                    miniValue = currentDiff;
+                }
+            }
+            return miniValue;
+        }
+
 
         #endregion
     }
