@@ -31,6 +31,10 @@ int[] d = new int[2] { 1, 200 };
 
 var miniGap = CenterUility.TapeEquilibriumV2(d);
 
+int[] e = new int[4] { 1,2,1,2};
+
+var result =CenterUility.MaxCounters(1,e);
+
 Console.ReadKey();
 
 

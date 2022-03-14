@@ -186,5 +186,46 @@
 
 
         #endregion
+
+        #region Lesson 4 
+       /// <summary>
+       ///Performance: 66% 
+       ///Correctness: 100%
+       /// </summary>
+       /// <param name="N"></param>
+       /// <param name="A"></param>
+       /// <returns></returns>
+        public static int[] MaxCounters(int N, int[] A)
+        {
+            int[] result = new int[N];
+            var length = A.Length;
+            int max = 0;
+            for (int i = 0;i < A.Length;i++)
+            {
+                var indexResult = A[i];
+                var index = A[i] - 1;
+                if (A[i] <= N && A[i] >=1)
+                {
+                    result[index]++;
+                    if(result[index] > max)
+                        max = result[index];  
+                }
+                else
+                {
+                    // find max value , and all set to max value
+                    for(int k=0; k < result.Length; k++)
+                    {
+                        result[k] = max;
+                    }
+                }
+            }
+            return result;
+        }
+
+        public static int[] MaxCountersV2(int N, int[] A)
+        {
+            return A;
+        }
+        #endregion
     }
 }
