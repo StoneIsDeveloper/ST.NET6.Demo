@@ -219,12 +219,89 @@
                     }
                 }
             }
+
             return result;
         }
 
+        /// <summary>
+        /// 不要 for 嵌套， 减少数量级
+        /// </summary>
+        /// <param name="N"></param>
+        /// <param name="A"></param>
+        /// <returns></returns>
         public static int[] MaxCountersV2(int N, int[] A)
         {
-            return A;
+            int[] result = new int[N];
+            int max = 0;
+            int globalMax = 0;
+            for (int i = 0; i < A.Length; i++)
+            {
+                var index = A[i] - 1;
+                if (A[i] <= N && A[i] >= 1)  //increase
+                {
+                    if (result[index] < globalMax)
+                    {
+                        result[index] = globalMax;
+                    }
+                    result[index]++;
+                    if (result[index] > max)
+                        max = result[index];
+                }
+                else
+                {
+                    // find max value , and all set to max value
+                    globalMax = max;
+                }
+            }
+
+            for (int k = 0; k < result.Length; k++)
+            {
+                if(result[k] <globalMax)
+                    result[k] = globalMax;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Performance: 100%
+        ///  complexity: O(N + M)
+        /// </summary>
+        /// <param name="N"></param>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public static int[] MaxCountersFinal(int N, int[] A)
+        {
+            int[] operation = new int[N];
+            int max = 0, globalMax = 0;
+            foreach (var item in A)
+            {
+                if (item > N)
+                {
+                    globalMax = max;
+                }
+                else
+                {
+                    if (operation[item - 1] < globalMax)
+                    {
+                        operation[item - 1] = globalMax;
+                    }
+                    operation[item - 1]++;
+                    if (max < operation[item - 1])
+                    {
+                        max = operation[item - 1];
+                    }
+                }
+            }
+            for (int i = 0; i < operation.Length; i++)
+            {
+                if (operation[i] < globalMax)
+                {
+                    operation[i] = globalMax;
+                }
+            }
+
+            return operation;
         }
         #endregion
     }
