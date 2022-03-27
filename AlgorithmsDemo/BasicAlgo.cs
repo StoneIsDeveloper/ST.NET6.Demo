@@ -10,48 +10,71 @@ namespace AlgorithmsDemo
     {
 
         #region 分治算法 - 归并排序
-        public void TestMerge()
+        public static int[] TestMerge()
         {
-           var a = new int[8] { 2, 4, 5, 7, 1, 2, 3, 6 };
+            var a = new int[8] { 4, 2, 7, 1, 6, 3, 5, 2 };
             var p = 1;
             var q = 4;
             var r = 8;
-           var result =  Merge(a, p, q, r);
+            return Merge(a, p, q, r);
         }
 
-        public int[] Merge(int[] a,int p1,int p2,int r)
+        public static void MergeSort(int[] a, int p, int r)
+        {
+            if (p < r)
+            {
+                int q = (p + r) / 2;  // 8/2 =4  9/2 = 4
+
+                // 递归式 分解 
+                MergeSort(a, p, q);  // left
+                MergeSort(a, q + 1, r); //right
+
+                //自低向上 归并排序
+                Merge(a, p, q, r);
+
+
+
+            }
+        }
+
+        public static int[] Merge(int[] a, int p1, int p2, int r)
         {
             var result = new int[8];
             int n1 = p2 - p1 + 1; //4
             int n2 = r - p2;  // 4
-            int[] left = new int[n1+1];   //2, 4, 5, 7
-            int[] rigth = new int[n2+1];  //1, 2, 3, 6
+            int[] left = new int[n1 + 1];   //4, 2, 7, 5
+            int[] rigth = new int[n2 + 1];  //1, 3, 6, 2 
+
             for (int i = 0; i < n1; i++)
             {
-                left[i] = a[p1+i-1];
+                left[i] = a[p1 + i - 1];
             }
             for (int j = 0; j < n2; j++)
             {
-                rigth[j] = a[n2 + j];
+                rigth[j] = a[p2 + j];
             }
-            left[n1 + 1] = int.MaxValue;
-            rigth[n2 + 1] = int.MaxValue;
+
+            left[n1] = int.MaxValue;
+            rigth[n2] = int.MaxValue;
 
             int ii = 0;
             int jj = 0;
 
-            for (int k = 0; k < r; k++)
+            for (int k = p1; k <= r; k++)
             {
-                if(left[ii] <= rigth[jj])
+
+                if (left[ii] <= rigth[jj])
                 {
-                    a[k] = left[ii];
+                    a[k-1] = left[ii];
                     ii++;
                 }
                 else
                 {
-                    a[k] = rigth[jj];
+                    a[k-1] = rigth[jj];
                     jj++;
                 }
+
+
             }
 
             return a;
