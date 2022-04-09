@@ -30,6 +30,48 @@ Console.WriteLine("Hello, World!");
 
 }
 
+{
+    //矩阵
+
+    //示例矩阵
+    int[][] matrix1 = new int[][]
+    {
+        new int[] { 1, 2, 3 },
+        new int[] { 4, 5, 6 },
+        new int[] { 7, 8, 9 }
+    };
+    int[][] matrix2 = new int[][]
+    {
+      new int[] { 2, 3, 4 },
+      new int[] { 5, 6, 7 },
+      new int[] { 8, 9, 10 }
+    };
+
+    int[][] matrix3 = new int[][]
+    {
+          new int[] { 1 },
+          new int[] { 1,2,},
+          new int[] { 1,2,3 }
+    };
+
+
+    BasicMatrix.ShowMatrixV2(matrix1);
+    BasicMatrix.ShowMatrixV2(matrix2);
+    
+    var result1 = BasicMatrix.AddMatrix(matrix1, matrix2);
+    BasicMatrix.ShowMatrixV2(result1);
+
+    //二维数组
+    // 1  2  3
+    // 4  5  6
+    const int rowLength = 2;
+    const  int columnLength = 3;
+    int[,] ma = new int[rowLength, columnLength] { { 1,2,3},{ 4,5,6} };
+
+    BasicMatrix.ShowMatrix(ma);
+
+}
+
 
 
 
