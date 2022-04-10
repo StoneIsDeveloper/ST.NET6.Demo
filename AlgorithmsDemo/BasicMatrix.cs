@@ -21,7 +21,7 @@ namespace AlgorithmsDemo
             if (matrix.Length < 1) return true;
 
             //不同行列数如果不同，则不是矩阵
-            int count = matrix.Length;
+            int count = matrix[0].Length;
             for(int i=1; i< matrix.Length; i++)
             {
                 if(matrix[i].Length != count)
@@ -50,7 +50,7 @@ namespace AlgorithmsDemo
 
         }
 
-        /// <summary>
+        /// <summary> 
         /// 矩阵加法
         /// </summary>
         /// <param name="matrix1"></param>
@@ -85,6 +85,50 @@ namespace AlgorithmsDemo
 
         }
 
+
+        public static int[][] MultMatrix(int[][] matrix1, int[][] matrix2)
+        {
+            //合法性检查 
+            if(!IsMatrix(matrix1) || !IsMatrix(matrix2))
+            {
+                throw new Exception("input is not matrix");
+            }
+
+            // var rowLength = matrix1.GetLength(0);
+            var columnLength = matrix1[0].Length;
+            var rowLength = matrix2.Length;
+            
+            if(rowLength != columnLength)
+            {
+                throw new Exception("matrix2 rows is different with matrix2 columns");
+            }
+
+            //  matrix1是m*n矩阵，  2*3
+            //  matrix2是n*p矩阵，       3*2
+            //  则result是m*p矩阵   
+            int m = matrix1.Length, n = matrix2.Length, p = matrix2[0].Length;
+            int[][] result = new int[m][];
+            for (int i = 0; i < m; i++)
+            {
+                result[i] = new int[p];
+            }
+
+            //矩阵乘法
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < p; j++)
+                {
+                    //对乘加法则
+                    for (int k = 0; k < n; k++)
+                    {
+                        result[i][j] += matrix1[i][k] * matrix2[k][j];
+                    }
+                }
+            }
+
+
+            return result;            
+        }
 
         public static void ShowMatrixV2(int[][] matrix)
         {

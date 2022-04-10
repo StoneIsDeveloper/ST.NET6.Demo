@@ -54,12 +54,38 @@ Console.WriteLine("Hello, World!");
           new int[] { 1,2,3 }
     };
 
+    //  1  2  3
+    //  4  5  6
+    int[][] matrix4 = new int[][]
+    {
+        new int[] { 1, 2, 3 },
+        new int[] { 4, 5, 6 }
+    };
+    // 1  2
+    // 0  1
+    // 2  3
+    int[][] matrix5 = new int[][]
+     {
+              new int[] { 1, 2 },
+              new int[] { 0, 1 },
+              new int[] { 2, 2 }
+     };
+    int[][] matrix6 = new int[][]
+    {
+              new int[] { 1, 2,1 },
+              new int[] { 0, 1,1 },
+              new int[] { 2, 2,1 }
+    };
 
-    BasicMatrix.ShowMatrixV2(matrix1);
-    BasicMatrix.ShowMatrixV2(matrix2);
-    
-    var result1 = BasicMatrix.AddMatrix(matrix1, matrix2);
-    BasicMatrix.ShowMatrixV2(result1);
+
+    BasicMatrix.ShowMatrixV2(matrix4);
+    //BasicMatrix.ShowMatrixV2(matrix5);
+    BasicMatrix.ShowMatrixV2(matrix6);
+
+    // var result1 = BasicMatrix.AddMatrix(matrix1, matrix2);
+
+    var result2 = BasicMatrix.MultMatrix(matrix4, matrix6);
+    BasicMatrix.ShowMatrixV2(result2);
 
     //二维数组
     // 1  2  3
@@ -68,7 +94,7 @@ Console.WriteLine("Hello, World!");
     const  int columnLength = 3;
     int[,] ma = new int[rowLength, columnLength] { { 1,2,3},{ 4,5,6} };
 
-    BasicMatrix.ShowMatrix(ma);
+  //  BasicMatrix.ShowMatrix(ma);
 
 }
 
