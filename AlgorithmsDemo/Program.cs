@@ -98,6 +98,28 @@ Console.WriteLine("Hello, World!");
 
 }
 
+#region  
+{
+    int[][] matrix1 = new int[][]
+    {
+        new int[] { 2, 3 },
+        new int[] { 4, 6 },
+
+    };
+    int[][] matrix2 = new int[][]
+    {
+      new int[] { 7, 3 },
+      new int[] { 5, 6 }
+    };
+
+    int n = matrix1.GetLength(0);
+
+    int[][] result = BasicMatrix.StrassenMultiply(matrix1, matrix2);
+
+    BasicMatrix.ShowMatrixV2(result);
+
+}
+#endregion
 
 
 
