@@ -78,14 +78,14 @@ Console.WriteLine("Hello, World!");
     };
 
 
-    BasicMatrix.ShowMatrixV2(matrix4);
+  //  BasicMatrix.ShowMatrixV2(matrix4);
     //BasicMatrix.ShowMatrixV2(matrix5);
-    BasicMatrix.ShowMatrixV2(matrix6);
+  //  BasicMatrix.ShowMatrixV2(matrix6);
 
     // var result1 = BasicMatrix.AddMatrix(matrix1, matrix2);
 
-    var result2 = BasicMatrix.MultMatrix(matrix4, matrix6);
-    BasicMatrix.ShowMatrixV2(result2);
+   // var result2 = BasicMatrix.MultMatrix(matrix4, matrix6);
+  //  BasicMatrix.ShowMatrixV2(result2);
 
     //二维数组
     // 1  2  3
@@ -98,25 +98,47 @@ Console.WriteLine("Hello, World!");
 
 }
 
-#region  
+#region  Strassen Multiply 矩阵乘法
 {
-    int[][] matrix1 = new int[][]
+    int[][] matrixa = new int[][]
     {
         new int[] { 2, 3 },
         new int[] { 4, 6 },
 
     };
-    int[][] matrix2 = new int[][]
+    int[][] matrixb = new int[][]
     {
       new int[] { 7, 3 },
       new int[] { 5, 6 }
     };
 
-    int n = matrix1.GetLength(0);
+    int[][] matrixc = new int[][]
+    {
+        new int[] { 2, 3,5,4 },
+        new int[] { 4, 6,7,8 },
+        new int[] { 5, 1,7,7 },
+        new int[] { 8, 4,6,2 },
+    };
 
-    int[][] result = BasicMatrix.StrassenMultiply(matrix1, matrix2);
+    int[][] matrixd = new int[][]
+    {
+      new int[] { 5, 2, 1, 7},
+      new int[] { 1, 3, 9, 8},
+      new int[] { 9, 3, 4, 5},
+      new int[] { 9, 2, 0, 1},
+    };
 
-    BasicMatrix.ShowMatrixV2(result);
+
+    int[][] result1 = BasicMatrix.MultMatrix(matrixa, matrixb);
+    int[][] result2 = BasicMatrix.StrassenMultiply(matrixa, matrixb);
+    BasicMatrix.ShowMatrixV2(result1);
+    BasicMatrix.ShowMatrixV2(result2);
+
+    int[][] result3 = BasicMatrix.MultMatrix(matrixc, matrixd);
+    int[][] result4 = BasicMatrix.StrassenMultiply(matrixc, matrixd);
+
+    BasicMatrix.ShowMatrixV2(result3);
+    BasicMatrix.ShowMatrixV2(result4);
 
 }
 #endregion

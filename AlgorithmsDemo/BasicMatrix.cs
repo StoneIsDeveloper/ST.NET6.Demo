@@ -104,7 +104,7 @@ namespace AlgorithmsDemo
             }
 
             //  matrix1是m*n矩阵，  2*3
-            //  matrix2是n*p矩阵，       3*2
+            //  matrix2是n*p矩阵，  3*2
             //  则result是m*p矩阵   
             int m = matrix1.Length, n = matrix2.Length, p = matrix2[0].Length;
             int[][] result = new int[m][];
@@ -194,20 +194,20 @@ namespace AlgorithmsDemo
 
             // Step 1: Dividing Matrix into parts
             // by storing sub-parts to variables
-            int[][] A11 = CreateEmptyMatrix(n/2);
-            int[][] A12 = CreateEmptyMatrix(n/2);
-            int[][] A21 = CreateEmptyMatrix(n/2);
-            int[][] A22 = CreateEmptyMatrix(n/2);
-            int[][] B11 = CreateEmptyMatrix(n/2);
-            int[][] B12 = CreateEmptyMatrix(n/2);
-            int[][] B21 = CreateEmptyMatrix(n/2);
-            int[][] B22 = CreateEmptyMatrix(n/2);
+            int[][] A11 = CreateEmptyMatrix(n / 2);
+            int[][] A12 = CreateEmptyMatrix(n / 2);
+            int[][] A21 = CreateEmptyMatrix(n / 2);
+            int[][] A22 = CreateEmptyMatrix(n / 2);
+            int[][] B11 = CreateEmptyMatrix(n / 2);
+            int[][] B12 = CreateEmptyMatrix(n / 2);
+            int[][] B21 = CreateEmptyMatrix(n / 2);
+            int[][] B22 = CreateEmptyMatrix(n / 2);
 
             // Step 2: Dividing matrix A into 4 halves
             Split(matrix1, A11, 0, 0);
-            Split(matrix1, A12, 0, n/2);
-            Split(matrix1, A21, n/2, 0);
-            Split(matrix1, A22, n/2, n/2);
+            Split(matrix1, A12, 0, n / 2);
+            Split(matrix1, A21, n / 2, 0);
+            Split(matrix1, A22, n / 2, n / 2);
 
 
             // Step 2: Dividing matrix B into 4 halves
@@ -220,38 +220,38 @@ namespace AlgorithmsDemo
             // 
 
             // Using Formulas as described in algorithm
-            // M1:=(A1+A3)X(B1+B2)
-            int[][] M1 = StrassenMultiply(Add(A11, A22), Add(B11, B22));
+            // M1:= A11*(B12-B22)
+            int[][] M1 = StrassenMultiply(A11, Sub(B12, B22));
 
-            // M2:=(A2-A4)X(B3+B4)
-            int[][] M2 = StrassenMultiply(Add(A11, A22), Add(B11, B22));
+            // M2:=(A11+A12)*B22
+            int[][] M2 = StrassenMultiply(Add(A11,A12), B22);
 
-            // M3:=(A1-A4)X(B1+A4)
-            int[][] M3 = StrassenMultiply(Add(A11, A22), Add(B11, B22));
+            // M3:=(A21+A22)*B11
+            int[][] M3 = StrassenMultiply(Add(A21,A22),B11);
 
-            // M4:=A1X(B2-B4)
+            // M4:=A22*(B21-B11)
             int[][] M4 = StrassenMultiply(A22, Sub(B21, B11));
 
-            // M5:=(A3+A4)X(B1)
-            int[][] M5 = StrassenMultiply(Add(A11, A12), B22);
+            // M5:=(A11+A22)*(B11+B22)
+            int[][] M5 = StrassenMultiply(Add(A11, A22), Add(B11,B22));
 
-            // M6:=(A1+A2)X(B4)
-            int[][] M6 = StrassenMultiply(Sub(A21, A11), Add(B11, B12));
+            // M6:=(A12-A22)X(B21+B22)
+            int[][] M6 = StrassenMultiply(Sub(A12, A22), Add(B21, B22));
 
-            // M7:=A4X(B3-B1)
-            int[][] M7 = StrassenMultiply(Sub(A12, A22), Add(B21, B22));
+            // M7:=(A11-A21) X(B11+B12)
+            int[][] M7 = StrassenMultiply(Sub(A11, A21), Add(B11, B12));
 
-            // P:=M2XM3-M6-M7
-            int[][] C11 = Add(Sub(Add(M1, M4), M5), M7);
+            // P:= M5 + M4 - M2 + M6
+            int[][] C11 = Add(Sub(Add(M5, M4), M2), M6);
 
-            // Q:=M4+M6
-            int[][] C12 = Add(M3, M5);
+            // Q:= M1 + M2
+            int[][] C12 = Add(M1, M2);
 
-            // R:=M5+M7
-            int[][] C21 = Add(M2, M4);
+            // R:= M3 + M4
+            int[][] C21 = Add(M3, M4);
 
             // S:=M1-M3-M4-M5
-            int[][] C22 = Add(Sub(Add(M1, M3), M2), M6);
+            int[][] C22 = Sub(Sub(Add(M5, M1), M3), M7);
 
             // Step 3: Join 4 halves into one result matrix
             Join(C11, result, 0, 0);
@@ -289,7 +289,7 @@ namespace AlgorithmsDemo
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
-                    c[i][j] = a[i][j] + b[i][j];
+                    c[i][j] = a[i][j] - b[i][j];
             }
 
             return c;
@@ -346,7 +346,7 @@ namespace AlgorithmsDemo
                 int j2 = jB;
                 for (int j1 = 0; j1 < childMatrix.GetLength(0); j1++)
                 {
-                    matrix[i1][j1] = childMatrix[i2][j2];
+                    matrix[i2][j2] = childMatrix[i1][j1];
                     j2++;
                 }
                 i2++;
